@@ -1,0 +1,29 @@
+//code mysql
+CREATE DATABASE quanLyNhanVien;
+USE quanLyNhanVien;
+
+CREATE TABLE roles (
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL UNIQUE -- ví dụ: Admin, User
+);
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role_id INT,
+    is_active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (role_id) REFERENCES roles(role_id)
+);
+
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT CHECK (age > 0),
+    department VARCHAR(100),
+    created_by INT,
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
+
+INSERT INTO roles (role_name) VALUES ('Admin'), ('User');
+

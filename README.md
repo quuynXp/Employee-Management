@@ -136,4 +136,4 @@ Dependencies (Maven):
 
 ## 📝 License
 
-MIT © 2025 Your Name  
+MIT © 2025 Thai Ngoc Quyen 
